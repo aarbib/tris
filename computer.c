@@ -3,17 +3,6 @@
 #include "basef.h"
 #include "gamef.h"
 
-int computerInput(int grid[9])
-{
-
-    printf("giocatore 2: computer ");
-    int spot = foundTwo(grid);
-    while(grid[spot] != 0)
-    {
-        spot++;
-    }
-    return spot+1;
-}
 
 int foundTwo(int arrayLine[9])
 {
@@ -43,5 +32,17 @@ int foundTwo(int arrayLine[9])
     }
     return 0;
 
+}
+
+int computerInput(int grid[9])
+{
+
+    printf("giocatore 2: computer ");
+    int spot = foundTwo(grid);
+    while(grid[spot] != 0)
+    {
+        spot++;
+    }
+    return spot+1;
 }
 

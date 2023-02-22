@@ -9,7 +9,7 @@
 // 2 = "()"
 void prinTris(int griglia[])
 {
-    const size = 7;
+    const int size = 7;
     int slot = -1;
     for (int i = 0 ; i < size ; i++)
     {
