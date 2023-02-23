@@ -9,49 +9,43 @@
 // 2 = "()"
 void prinTris(int griglia[])
 {
-    const int size = 7;
-    int slot = -1;
-    for (int i = 0 ; i < size ; i++)
-    {
-        for (int j = 0; j < size ; j++)
-        {
-            if(i%2 == 0)
-            {
-                if(j%2 == 0)
-                {
-                    printf("+");
-                }
-                else
-                {
-                    printf("--");
-                }
-            }
-            else
-            {
-                if(j%2 == 0)
-                {
-                    printf("|");
-                }
-                else
-                {
-                    slot++;
-                    if(griglia[slot] == 1)
-                    {
-                        printf("><");
-                    }
-                    else if(griglia[slot] == 2)
-                    {
-                        printf("()");
-                    }
-                    else
-                    {
-                        printf("  ");
-                    }
-                }
-            }
+    const char layout[] =
+        "+--+--+--+\n"
+        "|%s|%s|%s|\n"
+        "+--+--+--+\n"
+        "|%s|%s|%s|\n"
+        "+--+--+--+\n"
+        "|%s|%s|%s|\n"
+        "+--+--+--+\n";
+
+    char simboli[9][3] = {
+        "  ", "  ", "  ",
+        "  ", "  ", "  ",
+        "  ", "  ", "  "
+    };
+
+    for (int i = 0; i < 9; i++) {
+        switch (griglia[i]) {
+        case 0:
+            break;
+        case 1:
+            simboli[i][0] = '>';
+            simboli[i][1] = '<';
+            break;
+        case 2:
+            simboli[i][0] = '(';
+            simboli[i][1] = ')';
+            break;
+        default:
+            printf("Codice nella griglia non supportato!");
+            break;
         }
-        printf("\n");
     }
+
+    printf(layout,
+        simboli[0], simboli[1], simboli[2],
+        simboli[3], simboli[4], simboli[5],
+        simboli[6], simboli[7], simboli[8]);
 }
 
 //prende come input solo e soltanto un intero
@@ -67,7 +61,7 @@ int intInput(char message[])
         {
             break;
         }
-        printf("devi inserire un numero\n"); //in realtà pija pure altri interi ma shhh
+        printf("devi inserire un numero\n"); //in realtï¿½ pija pure altri interi ma shhh
         printf("%s",message);
     }
 
@@ -87,13 +81,13 @@ char charInput()
         {
             break;
         }
-        printf("vuoi continuare a giocare?(S/N): "); //in realtà prende tutti i char
+        printf("vuoi continuare a giocare?(S/N): "); //in realtï¿½ prende tutti i char
     }
 
     return lett; //ritorna un char
 }
 //in entrambi i casi sta ad altre funzioni controllare se i dati inseriti sono utilizzabili
-//queste funzioni servono solo a ottenere dei dati specifici come input e perché scanf fa ridere i polli
+//queste funzioni servono solo a ottenere dei dati specifici come input e perchï¿½ scanf fa ridere i polli
 
 //funzione brutta in culo che rende ogni valore in GAMEDATA 0
 GAMEDATA allZero()
