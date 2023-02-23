@@ -1,15 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "basef.h"
-#include "gamef.h"
+#include "computer.h"
 
 
 int foundTwo(int arrayLine[9])
 {
 
     int first, second, third;
+    int pickSpot = 0;
 
-    int listAlmostWins[24][3] = {
+    static int listAlmostWins[24][3] = {
         {0,1,2},{1,2,0},{0,2,1},
         {3,4,5},{4,5,3},{3,5,4},
         {6,7,8},{7,8,6},{6,8,7},
@@ -27,10 +28,17 @@ int foundTwo(int arrayLine[9])
         third = listAlmostWins[i][2];
         if (arrayLine[first] == arrayLine[second] && arrayLine[first] != 0 && arrayLine[third] == 0)
         {
-            return third;
+            if(arrayLine[first] == 2)
+            {
+                return third;
+            }
+            else
+            {
+                pickSpot = third;
+            }
         }
     }
-    return 0;
+    return pickSpot;
 
 }
 
